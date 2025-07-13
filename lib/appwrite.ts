@@ -3,10 +3,10 @@ import { Account, Avatars, Client, Databases, ID, Query } from "react-native-app
 
 export const appwriteConfig = {
   endpoint: process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT!,
-  platform: process.env.PLATFORM!,
+  platform: process.env.EXPO_PUBLIC_PLATFORM!,
   projectId: process.env.EXPO_PUBLIC_APPWRITE_PROJECT_ID!,
-  databaseId: process.env.DATABASE_ID!,
-  userCollectionId: process.env.USER_COLLECION_ID!,
+  databaseId: process.env.EXPO_PUBLIC_DATABASE_ID!,
+  userCollectionId: process.env.EXPO_PUBLIC_USER_COLLECION_ID!,
 };
 
 export const client = new Client();

@@ -1,5 +1,6 @@
 import CartButton from "@/components/CartButton";
 import { images, offers } from "@/constants";
+import useAuthStore from "@/store/auth.store";
 import cn from "clsx";
 import { Fragment } from "react";
 import {
@@ -13,27 +14,29 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function App() {
+  const { user } = useAuthStore();
+
   return (
     <SafeAreaView className="flex-1 bg-white">
       <FlatList
         data={offers}
         keyExtractor={(item) => item.id.toString()}
-        ListHeaderComponent={()=>(
+        ListHeaderComponent={() => (
           <View className="flex-between flex-row w-full my-5 px-5">
-          <View className="flex-start">
-            <Text className="small-bold text-primary">DELIVER TO</Text>
-            <TouchableOpacity className="flex-center flex-row gap-x-1 mt-0.5">
-              <Text className="paragraph-bold text-dark-100">India</Text>
-              <Image
-                source={images.arrowDown}
-                className="size-3"
-                resizeMode="contain"
-              />
-            </TouchableOpacity>
+            <View className="flex-start">
+              <Text className="small-bold text-primary">DELIVER TO</Text>
+              <TouchableOpacity className="flex-center flex-row gap-x-1 mt-0.5">
+                <Text className="paragraph-bold text-dark-100">India</Text>
+                <Image
+                  source={images.arrowDown}
+                  className="size-3"
+                  resizeMode="contain"
+                />
+              </TouchableOpacity>
+            </View>
+
+            <CartButton />
           </View>
-  
-          <CartButton/>
-        </View> 
         )}
         contentContainerClassName="pb-28 px-5"
         renderItem={({ item, index }) => {
